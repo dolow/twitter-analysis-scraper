@@ -1,0 +1,17 @@
+{
+  "name": "twitter-analysis-scraper",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "./bin/twitter-analysis-scraper.js"
+  },
+  "bin": {
+    "twitter-analysis-scraper": "./bin/twitter-analysis-scraper.js"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "puppeteer": "^5.2.1"
+  }
+}
