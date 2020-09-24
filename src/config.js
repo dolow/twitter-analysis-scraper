@@ -4,10 +4,10 @@ class Config {
       account:  twitterAccount,
       password: twitterPassword,
     });
-    this.target = Object.freeze({
+    this.target = {
       begin:  new Date(targetYear, targetMonth - 1, 1),
       end:    new Date(targetYear, targetMonth, 0),
-    });
+    };
     this.dom = Object.freeze({
       dateRangeButton:       page => page.$('#daterange-button'),
       dataRangeApplyButton:  page => page.$('.applyBtn.btn.btn-sm.btn-primary'),
@@ -27,6 +27,13 @@ class Config {
       byTweetFilePrefix: 'tweet_activity_',
       byDayFilePrefix: 'daily_tweet_',
     });
+
+    const today = new Date();
+    if (this.target.end.getYear() === today.getYear() && this.target.end.getMonth() === today.getMonth()) {
+      this.target.end = today;
+    }
+
+    Object.freeze(this.target);
   }
 }
 
