@@ -141,30 +141,24 @@ async function main() {
     await leftCalendar.refreshDate();
     await rightCalendar.refreshDate();
 
-    console.log("left");
-    {
-      let asjusted = true;
-      while (asjusted) {
-        asjusted = await leftCalendar.adjustStep(config.target.begin);
-      }
-    }
-
-    await ss(page);
-
     console.log("right");
     {
       let asjusted = true;
       while (asjusted) {
         asjusted = await rightCalendar.adjustStep(config.target.end);
       }
+      await rightCalendar.pickDate(config.target.end);
+      await page.waitFor(200);
     }
 
     await ss(page);
 
-    console.log("pick date range");
+    console.log("left");
     {
-      await rightCalendar.pickDate(config.target.end);
-      await page.waitFor(200);
+      let asjusted = true;
+      while (asjusted) {
+        asjusted = await leftCalendar.adjustStep(config.target.begin);
+      }
       await leftCalendar.pickDate(config.target.begin);
       await page.waitFor(200);
     }

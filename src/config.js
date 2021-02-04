@@ -30,6 +30,7 @@ class Config {
 
     const today = new Date();
     if (this.target.end.getYear() === today.getYear() && this.target.end.getMonth() === today.getMonth()) {
+      today.setDate(today.getDate() - 1);
       this.target.end = today;
     }
 
